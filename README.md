@@ -4,7 +4,7 @@ You can add a timestamp to your post meta each time a product is viewed, then qu
 
 ### Set Timestamp
 
-Assuming you are using a custom post type named **'products'**, add the following inside the loop of your **single-product.php** template file:
+Assuming you are using a custom post type named **'products'**, add the code below inside the loop of your **single-product.php** template file:
 
 ```html
 if (get_post_type( $post->ID ) == 'products ): 
