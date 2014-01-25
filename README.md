@@ -1,4 +1,3 @@
-
 ## Recently Views Post ( Wordpress )
 
 You can add a timestamp to your post meta each time a product is viewed, then query the number of most recently viewed products/posts.
@@ -35,3 +34,5 @@ if( have_posts() ):
 endif;
 wp_reset_query();
 ```
+
+Now you have the list of recently viewed post/products by the user.
