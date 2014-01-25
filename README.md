@@ -1,14 +1,23 @@
-You can add a timestamp to your post meta each time a product is viewed, then query the five most recently viewed products.
 
-Assuming you are using a custom post type named 'product', add the following inside the loop of your single-product.php template file:
+## Recently Views Post ( Wordpress )
 
-if (get_post_type( $post->ID ) == 'product' ): 
+You can add a timestamp to your post meta each time a product is viewed, then query the number of most recently viewed products/posts.
+
+### Set Timestamp
+
+Assuming you are using a custom post type named 'products', add the following inside the loop of your **single-product.php** template file:
+
+```html
+if (get_post_type( $post->ID ) == 'products ): 
     update_post_meta( $post->ID, '_last_viewed', current_time('mysql') );
 endif;
+```
 
+### Display Recent Viewed Post
 To display the five most recently viewed products:
 
-<?php
+```html
+
 $args = array(
     'post_type' => 'product',
     'posts_per_page' => 5,
@@ -16,10 +25,13 @@ $args = array(
     'orderby' => 'meta_value',
     'order' => 'DESC'
 );
-query_posts( $args ); ?>
-<?php if( have_posts() ) : ?>
-    <?php while( have_posts() ) : the_post(); ?>
-        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <?php endwhile; ?>
-<?php endif; ?>
-<?php wp_reset_query(); ?>
+
+query_posts( $args ); 
+
+if( have_posts() ):
+    while( have_posts() ) : the_post();
+        <h2><a href="YOUR LINK">YOUR TITLE</a></h2>
+    endwhile; 
+endif;
+wp_reset_query();
+```
